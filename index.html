@@ -194,15 +194,21 @@
         document.getElementById('regForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            let lastname = document.getElementById('lastname').value.trim();
+            let firstname = document.getElementById('firstname').value.trim();
+            let middlename = document.getElementById('middlename').value.trim();
+            
             let data = {
-                lastname: document.getElementById('lastname').value.trim(),
-                firstname: document.getElementById('firstname').value.trim(),
-                middlename: document.getElementById('middlename').value.trim(),
+                lastname: lastname,
+                firstname: firstname,
+                middlename: middlename,
+                fullname: `${lastname} ${firstname} ${middlename}`, // Bazaga moslash uchun F.I.Sh qo'shildi
                 region: document.getElementById('region').value,
                 district: document.getElementById('district').value.trim(),
                 phone: phoneInput.value.trim()
             };
 
+            // Botga yuborish
             tg.sendData(JSON.stringify(data));
             tg.close();
         });
